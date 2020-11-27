@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using GleifApi.Models;
 
 namespace GleifApi
 {
@@ -51,14 +52,20 @@ namespace GleifApi
 			BaseUri = baseUri;
 		}
 
+		public async Task<IEnumerable<LeiRecord>> GetLeiRecordsAsync(params string[] leiCodes)
+		{
+			string leiLookup = string.Join(',', leiCodes);
+
+			return await GetRecordsAsync(leiLookup);
+		}
+
 		/// <summary>
 		/// Retrieve LEI records for a specific LEI code
 		/// </summary>
 		/// <param name="leiCode">Legal Entity Identifier</param>
 		/// <returns>LEI record(s)</returns>
-		public async Task<IEnumerable<LeiRecord>> GetLeiRecordAsync(string leiCode)
+		async Task<IEnumerable<LeiRecord>> GetRecordsAsync(string leiCode)
 		{
-			//if (BaseUri == null)
 			if (_client == null)
 				throw new HttpRequestException("Cient not initialized");
 
