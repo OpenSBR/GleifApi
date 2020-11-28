@@ -18,13 +18,13 @@ namespace GleifApi.Models
 		[JsonPropertyName("$")]
 		public string? Text { get; set; }
 
-		public static implicit operator UnnamedType(string text)
+		public static implicit operator UnnamedType(string? text)
 		{
 			UnnamedType lei = new UnnamedType() { Text = text };
 			return lei;
 		}
 
-		public static implicit operator string?(UnnamedType lei)
+		public static implicit operator string?(UnnamedType? lei)
 		{
 			return lei?.Text;
 		}
