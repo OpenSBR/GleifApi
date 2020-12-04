@@ -13,11 +13,14 @@ namespace GleifApi.Models
     public class Registration
     {
         /// <summary>
-        /// 
+        /// Initial registration
         /// </summary>
         [JsonPropertyName("InitialRegistrationDate")]
         public UnnamedDateType? InitialRegistrationDate { get; set; }
 
+        /// <summary>
+        /// Last update
+        /// </summary>
         [JsonPropertyName("LastUpdateDate")]
         public UnnamedDateType? LastUpdateDate { get; set; }
 
